@@ -1,0 +1,31 @@
+name: FIKILE Growth Engine Tests
+
+on:
+  push:
+    branches: [fikile-growth-engine]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  growth-engine-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run Growth Engine tests
+        run: |
+          pytest -q tests/test_growth_experiments.py tests/test_linkedin_experiment.py tests/test_strategy_brain.py tests/test_video_experiments.py
