@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Growth Engine tests
         run: |
-          pytest -q tests/test_growth_experiments.py tests/test_linkedin_experiment.py tests/test_strategy_brain.py tests/test_video_experiments.py tests/test_growth_console.py
+          pytest -q tests/test_growth_experiments.py tests/test_linkedin_experiment.py tests/test_strategy_brain.py tests/test_video_experiments.py tests/test_growth_console.py tests/test_growth_registry.py
